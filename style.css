@@ -1,0 +1,222 @@
+/* ================================================= */
+/* ============== VARIÁVEIS DE CORES (MODO CLARO - PADRÃO) ============== */
+/* ================================================= */
+:root {
+    /* Cores Românticas do Tema Claro */
+    --color-primary: #FF69B4;     /* Rosa Choque / Pink (Amor) */
+    --color-accent: #FF1493;      /* Deep Pink (Destaque) */
+    --color-text: #333333;        /* Texto Escuro */
+    --color-background: #FFFAFA;  /* Fundo Branco Suave */
+    --color-card-bg: #FFFFFF;     /* Fundo do Card Branco */
+    --color-border: #FFC0CB;      /* Rosa Claro (Bordas) */
+    --color-spotify: #1DB954;     /* Verde Spotify */
+}
+
+/* ================================================= */
+/* ============== MEDIA QUERY: MODO ESCURO AUTOMÁTICO ============== */
+/* ================================================= */
+/* Este bloco sobrescreve as variáveis acima se o sistema do usuário estiver no modo escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Cores Românticas do Tema Escuro */
+        --color-primary: #FF69B4;     /* Mantém o Rosa (Destaque) */
+        --color-accent: #FF0066;      /* Rosa Vivo */
+        --color-text: #F0F0F0;        /* Texto Claro */
+        --color-background: #121212;  /* Fundo Escuro (Padrão de Apps) */
+        --color-card-bg: #1E1E1E;     /* Fundo do Card Escuro */
+        --color-border: #444444;      /* Borda Escura */
+    }
+}
+
+
+/* ================================================= */
+/* ============== ESTILOS GERAIS ============== */
+/* ================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    transition: background-color 0.5s, color 0.5s; /* Transição suave */
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-card-bg); /* Cor do texto no cabeçalho */
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.heart-icon {
+    font-size: 2.5em;
+    color: var(--color-card-bg);
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+/* Conteúdo Principal */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* Estilo do Card */
+.card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border);
+}
+
+h2 {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Galeria de Fotos */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.photo-wrapper {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-background);
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.photo-wrapper img:hover {
+    transform: scale(1.05);
+}
+
+.photo-wrapper span {
+    display: block;
+    font-size: 0.9em;
+    color: var(--color-text);
+    margin-top: 10px;
+}
+
+/* Playlist Spotify */
+.playlist-card {
+    text-align: center;
+}
+
+.spotify-link {
+    display: inline-block;
+    background-color: var(--color-spotify);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.spotify-link:hover {
+    background-color: #1ed760;
+    transform: translateY(-2px);
+}
+
+.spotify-link i {
+    margin-right: 10px;
+    font-size: 1.4em;
+}
+
+.note {
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9em;
+    color: var(--color-text);
+}
+
+
+/* ================================================= */
+/* ============== MEDIA QUERIES (RESPONSIVIDADE) ============== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr; /* Força uma coluna única no celular */
+    }
+
+    .photo-wrapper img {
+        height: 250px; /* Aumenta a altura da foto na coluna única */
+    }
+
+    .card {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .spotify-link {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
